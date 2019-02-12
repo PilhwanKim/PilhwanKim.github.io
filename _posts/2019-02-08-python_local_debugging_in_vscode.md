@@ -13,10 +13,10 @@ tags: [python, debugging, VSCode]
 
 ## 필요한 확장 플러그인 설치
 
-- sftp
-  - 서버에 버전 관리 시스템(Version control system) 없이도 코드를 Upload 하여 실행할 수 있도록 함
 - Python
   - 파이썬 인터프리터 실행을 위한 플러그인
+- sftp
+  - 서버에 버전 관리 시스템(Version control system) 없이도 코드를 Upload 하여 실행할 수 있도록 함
 
 ## 확장 플러그인 별 설정
 
@@ -61,38 +61,10 @@ tags: [python, debugging, VSCode]
   - 'python' 선택
   - 여러 디버그 세팅이 생성됨
 - django 프레임워크가 remote interpreter 실행 가능한 세팅 맞추기
-  - Python Attach (remote interpreter) 세팅만 할 경우
+  - Django 설정
     ```json
     {
-        "name": "Python: Attach",
-        "type": "python",
-        "request": "attach",
-        "port": 5678,
-        "host": "localhost"
-    }
-    ```
-
-  - Django 실행 세팅만 할 경우
-    ```json
-    {
-        "name": "Python: Django",
-        "type": "python",
-        "request": "launch",
-        "program": "${workspaceFolder}/manage.py",
-        "console": "integratedTerminal",
-        "args": [
-            "runserver",
-            "--noreload",
-            "--nothreading"
-        ],
-        "django": true
-    }
-    ```
-
-  - 둘의 세팅을 합쳐서 원하는 기능 살리기
-    ```json
-    {
-        "name": "Dev API",
+        "name": "Dev API Uwsgi(2.7)",
         "type": "python",
         "request": "attach",
         "localRoot": "${workspaceFolder}",
@@ -109,9 +81,41 @@ tags: [python, debugging, VSCode]
         "django": true
     }
     ```
+  - pytest 설정
+    ```json
+    {
+        "name": "Dev API Uwsgi(2.7)",
+        "type": "python",
+        "request": "attach",
+        "localRoot": "${workspaceFolder}",
+        "remoteRoot": "/tmp/api",
+        "port": 3000,
+        "host": "localhost",
+        "program": "${workspaceFolder}/manage.py",
+        "console": "integratedTerminal",
+        "args": [
+            "runserver",
+            "--noreload",
+            "--nothreading"
+        ],
+        "django": true
+    }
+    ```
+
   - 옵션 설명
-    - name : 디버그 선택시 이름
-    - request : 'attach' 일 경우 remote debugging 가능
+    - name : 디버그 선택 메뉴 이름
+    - request : 디버깅 방식. 'attach' 일 경우. remote debugging 가능
     - localRoot : 개발 PC 에서 소스 위치. ${workspaceFolder}" 를 루트로 두므로 변경 불필요.
     - remoteRoot : 리모트 디버깅 프로세스가 실행되는 서버 주소
     - port : 리모트 디버깅 접속을 위한 포트
+    - args : python 실행시 argument 들
+
+## pip install
+
+```sh
+# python 2.7 일 경우
+pip install more-itertools==5.0.0 pytest-django model_mommy
+
+# python 3 부터
+pip install pytest-django model_mommy
+```
