@@ -21,12 +21,12 @@ pip install ptvsd more-itertools==5.0.0 pytest-django pytest-profiling
 pip install ptvsd pytest-django pytest-profiling
 ```
 
-## 개발 PC에 VS Code 설치
+## VS Code 설치
 
-- https://code.visualstudio.com/ 이동
-- Downloads For Windonws 클릭
+- [VS Code 다운로드 사이트](https://code.visualstudio.com/Download) 이동
+- 환경에 맞는 다운로드 링크 클릭
 - 다운로드된 파일 실행
- 
+
 ## 필요한 확장 플러그인 설치
 
 - Ctrl + Shift + x > plugin search input 에 아래 각각의 플러그인 검색 > 선택 > install 버튼
