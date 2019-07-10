@@ -2,3 +2,9 @@ title: Leon's Tech Blog
 description: The fear of the LORD is the beginning of wisdom, and knowledge of the Holy One is understanding. - Proverbs 9:10
 theme: jekyll-theme-cayman
 repository: PilhwanKim/PilhwanKim.github.io
+
+plugins:
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: "/page:num/"
